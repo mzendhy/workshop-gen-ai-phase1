@@ -1,0 +1,30 @@
+**Retrieval-Augmented Generation (RAG)** is an AI framework that improves the quality and reliability of Large Language Model (LLM) outputs by grounding them in external, verifiable knowledge sources.
+
+Think of it as the difference between a **closed-book exam** (standard LLM) and an **open-book exam** (RAG).
+
+---
+
+### 1. The Problem: Why do we need RAG?
+Standard LLMs have three critical limitations:
+*   **Knowledge Cutoff:** They only know data up to their training date.
+*   **Hallucinations:** They confidently generate plausible-sounding but false information.
+*   **No Private Data Access:** They cannot answer questions about your company’s internal PDFs, proprietary databases, or yesterday’s meeting notes without retraining (which is expensive and slow).
+
+---
+
+### 2. The Core Architecture: Two Main Components
+RAG splits the work between a **Retrieval System** (Search) and a **Generative Model** (LLM).
+
+| Component | Role | Analogy |
+| :--- | :--- | :--- |
+| **Retriever** | Finds relevant documents/chunks from an external knowledge base based on the user query. | **The Librarian / Research Assistant** |
+| **Generator (LLM)** | Synthesizes the retrieved context + the user query into a coherent, natural language answer. | **The Writer / Analyst** |
+
+---
+
+### 3. The Workflow: Step-by-Step
+
+#### Phase 0: Offline Preparation (Indexing) — *Done once, updated periodically*
+1.  **Load Data:** Ingest raw data (PDFs, CSVs, HTML, Notion, SQL DBs, Confluence).
+2.  **Chunking:** Split large documents into smaller, semantically meaningful pieces (e.g., 512 tokens with overlap). *Crucial for precision.*
+3.  **Embedding:** Pass each chunk through an **Embedding Model** (e.g., `text-embedding-3-large`,

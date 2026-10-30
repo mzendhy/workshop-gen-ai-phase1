@@ -7,9 +7,11 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
 # Inisialisasi client OpenRouter
+# Tambahkan timeout (misal 30 detik)
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.environ.get("OPENROUTER_API_KEY"),
+    timeout=30.0  # Menambah batas waktu tunggu request
 )
 
 # 1. Definisi skema Tools

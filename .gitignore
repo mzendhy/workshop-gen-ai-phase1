@@ -2,3 +2,10 @@
 __pycache__/
 *.pyc
 .venv/
+
+# Abaikan folder output LoRA dan weights besar
+lora_adapter/
+output_lora/
+*.safetensors
+*.bin
+*.pt
